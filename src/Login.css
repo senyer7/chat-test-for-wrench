@@ -1,0 +1,159 @@
+/* Login.css — визуально совпадает с Profile.css (те же токены и кнопки) */
+:root {
+  --bg: #0f1115;
+  --panel: rgba(255, 255, 255, 0.06);
+  --panel-border: rgba(255, 255, 255, 0.12);
+  --text: #e8eaf0;
+  --muted: #a6adbb;
+  --primary: #7c5cff;
+  --primary-2: #5b3df0;
+  --ring: rgba(124, 92, 255, 0.35);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f7f8fb;
+    --panel: #ffffffcc;
+    --panel-border: #e6e8ef;
+    --text: #0f1115;
+    --muted: #5b6474;
+    --ring: rgba(92, 72, 255, 0.25);
+    --shadow: 0 10px 24px rgba(16, 24, 40, 0.08);
+  }
+}
+
+/* контейнер страницы */
+.login {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 32px 20px;
+  background: radial-gradient(
+      1200px 600px at 90% -10%,
+      rgba(124, 92, 255, 0.15),
+      transparent 60%
+    ),
+    radial-gradient(
+      800px 500px at -10% 100%,
+      rgba(46, 196, 182, 0.1),
+      transparent 60%
+    ),
+    var(--bg);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    "Helvetica Neue", Arial;
+}
+
+/* карточка формы */
+.login .panel {
+  width: min(420px, 100%);
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 22px;
+}
+
+/* заголовок и описание */
+.login h2 {
+  margin: 0 0 6px 0;
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.login .sub {
+  margin: 0 0 18px 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* форма */
+.login form {
+  display: grid;
+  gap: 12px;
+}
+.login input {
+  width: 100%;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--panel-border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.login input::placeholder {
+  color: var(--muted);
+}
+.login input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 6px var(--ring);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* кнопки — те же стили, что в Profile.css */
+.login .actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.login button {
+  appearance: none;
+  border: 1px solid transparent;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.06s ease, box-shadow 0.2s ease, background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.login .btn-primary {
+  background: linear-gradient(180deg, var(--primary), var(--primary-2));
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(124, 92, 255, 0.25);
+}
+.login .btn-primary:hover {
+  transform: translateY(-1px);
+}
+.login .btn-primary:active {
+  transform: translateY(0);
+}
+
+.login .btn-ghost {
+  background: transparent;
+  border-color: var(--panel-border);
+  color: var(--text);
+}
+.login .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* разделитель */
+.login .hr {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 12px;
+  margin: 4px 0;
+}
+.login .hr::before,
+.login .hr::after {
+  content: "";
+  height: 1px;
+  background: var(--panel-border);
+}
+
+/* мелкий текст */
+.login .hint {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+}

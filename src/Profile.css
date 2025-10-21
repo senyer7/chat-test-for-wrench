@@ -1,0 +1,256 @@
+/* Profile.css — компактный, современный, с поддержкой тёмной темы */
+
+/* ===== БАЗА / ТЕМА ======================================================= */
+:root {
+  --bg: #0f1115;
+  --panel: rgba(255, 255, 255, 0.06);
+  --panel-border: rgba(255, 255, 255, 0.12);
+  --text: #e8eaf0;
+  --muted: #a6adbb;
+  --primary: #7c5cff; /* фиолетовый акцент */
+  --primary-2: #5b3df0;
+  --ring: rgba(124, 92, 255, 0.35);
+  --ok: #16a34a;
+  --red: #ef4444;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f7f8fb;
+    --panel: #ffffffcc;
+    --panel-border: #e6e8ef;
+    --text: #0f1115;
+    --muted: #5b6474;
+    --ring: rgba(92, 72, 255, 0.25);
+    --shadow: 0 10px 24px rgba(16, 24, 40, 0.08);
+  }
+}
+
+/* ===== КОНТЕЙНЕР ========================================================= */
+.profile {
+  min-height: 100dvh;
+  padding: 32px 20px;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(
+      1200px 600px at 90% -10%,
+      rgba(124, 92, 255, 0.15),
+      transparent 60%
+    ),
+    radial-gradient(
+      800px 500px at -10% 100%,
+      rgba(46, 196, 182, 0.1),
+      transparent 60%
+    ),
+    var(--bg);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    "Helvetica Neue", Arial;
+}
+
+/* «карточка» */
+.profile > div,
+.profile form {
+  width: min(720px, 100%);
+}
+
+.profile .panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 22px;
+}
+
+/* ===== ШАПКА ============================================================= */
+.profile .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.profile .title {
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.profile .meta {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ===== КНОПКИ ============================================================ */
+.profile button {
+  appearance: none;
+  border: 1px solid transparent;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.06s ease, box-shadow 0.2s ease, background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.profile .btn-primary {
+  background: linear-gradient(180deg, var(--primary), var(--primary-2));
+  color: white;
+  box-shadow: 0 10px 20px rgba(124, 92, 255, 0.25);
+}
+.profile .btn-primary:hover {
+  transform: translateY(-1px);
+}
+.profile .btn-primary:active {
+  transform: translateY(0);
+}
+
+.profile .btn-ghost {
+  background: transparent;
+  border-color: var(--panel-border);
+  color: var(--text);
+}
+.profile .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ===== ФОРМА ============================================================= */
+.profile form {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.profile input {
+  width: 100%;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--panel-border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.profile input::placeholder {
+  color: var(--muted);
+}
+
+.profile input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 6px var(--ring);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* двухколоночная сетка на широких */
+@media (min-width: 680px) {
+  .profile form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .profile form > input:nth-last-child(2) {
+    grid-column: 1 / -1; /* url аватара на всю ширину */
+  }
+  .profile form > button[type="submit"] {
+    grid-column: 2 / 3; /* кнопка справа */
+    justify-self: end;
+  }
+}
+
+/* на мобильных — одна колонка, кнопка на всю ширину */
+@media (max-width: 679px) {
+  .profile form > button[type="submit"] {
+    width: 100%;
+  }
+}
+
+/* ===== ИНФО-БЛОКИ ======================================================== */
+.profile .info {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.profile .info strong {
+  color: var(--text);
+}
+
+/* ===== УТИЛИТЫ =========================================================== */
+.profile .stack {
+  display: grid;
+  gap: 12px;
+}
+.profile .row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* -------------------------- */
+
+.profile-view {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* аватар */
+.profile-view .avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid #f2f2f2;
+}
+
+/* текстовая часть */
+.profile-view .meta {
+  display: grid;
+  gap: 6px;
+}
+
+.profile-view .name {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.profile-view .username {
+  color: #888;
+  font-size: 14px;
+}
+
+.profile-view .bio {
+  margin: 6px 0 0;
+  line-height: 1.4;
+}
+
+.profile-view .ids {
+  margin-top: 8px;
+  display: grid;
+  gap: 4px;
+  color: #666;
+  font-size: 13px;
+}
+
+.profile-view .actions {
+  margin-top: 10px;
+}
+
+.jjj {
+  width: 100px;
+  height: 100px;
+}
