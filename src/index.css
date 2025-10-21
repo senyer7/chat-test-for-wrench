@@ -1,0 +1,312 @@
+@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Цветовая палитра */
+  --bg-primary: #0f1115;
+  --bg-secondary: rgba(255, 255, 255, 0.06);
+  --bg-accent: rgba(124, 92, 255, 0.1);
+  --text-primary: #e8eaf0;
+  --text-secondary: #a6adbb;
+  --text-accent: #7c5cff;
+  --border-primary: rgba(255, 255, 255, 0.12);
+
+  /* Градиенты */
+  --gradient-hero: linear-gradient(135deg, #7c5cff, #03d5ff);
+  --gradient-bg: radial-gradient(ellipse at top, #280a48, #0f1115);
+
+  /* Эффекты */
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --blur-effect: blur(12px);
+}
+
+html {
+  font-family: "Unbounded", system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--gradient-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  min-height: 100vh;
+}
+
+/* Header Styles */
+.app-header {
+  text-align: center;
+  margin: 4rem 0 3rem;
+  padding: 0 1rem;
+}
+
+.app-logo {
+  height: 5rem;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 4px 12px rgba(124, 92, 255, 0.3));
+}
+
+.app-title {
+  margin: 0 0 1rem 0;
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 700;
+  background: var(--gradient-hero);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+  line-height: 1.1;
+}
+
+.app-subtitle {
+  margin: 0;
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  color: var(--text-secondary);
+  font-weight: 300;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Main Content */
+.app-main {
+  width: 90%;
+  max-width: 60rem;
+  margin: 0 auto 4rem;
+}
+
+/* Features Section */
+.features-section {
+  padding: 2.5rem;
+  border-radius: 20px;
+  background: var(--bg-secondary);
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--blur-effect);
+  -webkit-backdrop-filter: var(--blur-effect);
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  text-align: center;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 600;
+  margin: 0 0 2rem 0;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.features-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 2rem;
+  justify-content: center;
+}
+
+.feature-card {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: var(--glass-bg);
+  border-radius: 16px;
+  border: var(--glass-border);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 24px rgba(124, 92, 255, 0.2);
+}
+
+.feature-icon {
+  height: 4rem;
+  width: auto;
+  object-fit: contain;
+  margin: 0 auto 1rem;
+  filter: drop-shadow(0 2px 8px rgba(124, 92, 255, 0.3));
+}
+
+.feature-title {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.feature-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+/* Examples Section */
+.examples-section {
+  margin: 3rem auto;
+}
+
+.examples-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.examples-title {
+  margin: 0;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.examples-tabs {
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.tab-button {
+  padding: 0.75rem 1.5rem;
+  border: var(--glass-border);
+  border-radius: 12px;
+  background: var(--glass-bg);
+  color: var(--text-secondary);
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.tab-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.tab-button.active {
+  background: var(--text-accent);
+  color: #ffffff;
+  border-color: var(--text-accent);
+  box-shadow: 0 4px 16px rgba(124, 92, 255, 0.3);
+}
+
+/* Tab Content */
+.tab-content {
+  padding: 2rem;
+  border-radius: 16px;
+  background: var(--bg-secondary);
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--blur-effect);
+  -webkit-backdrop-filter: var(--blur-effect);
+}
+
+.tab-content h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.tab-content code {
+  font-family: "Courier New", monospace;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-primary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app-header {
+    margin: 2rem 0;
+  }
+
+  .features-section {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: 1rem;
+  }
+
+  .feature-card {
+    padding: 1rem 0.75rem;
+  }
+
+  .examples-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .examples-tabs {
+    justify-content: center;
+  }
+
+  .tab-content {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-main {
+    width: 95%;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    max-width: 20rem;
+    margin: 0 auto;
+  }
+
+  .examples-tabs {
+    flex-direction: column;
+  }
+
+  .tab-button {
+    text-align: center;
+  }
+}
+
+/* Animation Utilities */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.feature-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.tab-content {
+  animation: fadeInUp 0.4s ease-out;
+}

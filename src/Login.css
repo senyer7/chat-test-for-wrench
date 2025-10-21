@@ -1,0 +1,294 @@
+/* Login.css - Glassmorphism стиль с улучшенной читаемостью */
+@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  /* Цветовая палитра */
+  --bg-primary: #0f1115;
+  --bg-secondary: rgba(255, 255, 255, 0.06);
+  --border-primary: rgba(255, 255, 255, 0.12);
+  --text-primary: #e8eaf0;
+  --text-secondary: #a6adbb;
+  --accent-primary: #7c5cff;
+  --accent-secondary: #5b3df0;
+  --accent-glow: rgba(124, 92, 255, 0.35);
+  --shadow-primary: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+  /* Эффекты стекла */
+  --glass-blur: blur(12px);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Светлая тема */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-primary: #f7f8fb;
+    --bg-secondary: rgba(255, 255, 255, 0.85);
+    --border-primary: rgba(255, 255, 255, 0.3);
+    --text-primary: #0f1115;
+    --text-secondary: #5b6474;
+    --accent-glow: rgba(92, 72, 255, 0.25);
+    --shadow-primary: 0 10px 24px rgba(16, 24, 40, 0.08);
+  }
+}
+
+/* Базовые стили страницы */
+.login-container {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1.25rem;
+  background: 
+    /* Акцентные градиенты для глубины */ radial-gradient(
+      1200px 600px at 90% -10%,
+      rgba(124, 92, 255, 0.15),
+      transparent 60%
+    ),
+    radial-gradient(
+      800px 500px at -10% 100%,
+      rgba(46, 196, 182, 0.1),
+      transparent 60%
+    ),
+    var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "Unbounded", system-ui, -apple-system, sans-serif;
+}
+
+/* Карточка в стиле стекла */
+.login-card {
+  width: min(420px, 100%);
+  background: var(--bg-secondary);
+  border: var(--glass-border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-primary), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  padding: 2rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Декоративный элемент для усиления эффекта стекла */
+.login-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+}
+
+/* Заголовок и подзаголовок */
+.login-title {
+  margin: 0 0 0.5rem 0;
+  font-size: clamp(1.5rem, 2.2vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(
+    135deg,
+    var(--text-primary),
+    var(--text-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.login-subtitle {
+  margin: 0 0 1.5rem 0;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+/* Форма */
+.login-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  height: 3rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-primary);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.form-input::placeholder {
+  color: var(--text-secondary);
+  font-weight: 300;
+}
+
+.form-input:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 4px var(--accent-glow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+/* Контейнер кнопок */
+.login-actions {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* Базовые стили кнопок */
+.btn {
+  appearance: none;
+  border: 1px solid transparent;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Основная кнопка */
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary),
+    var(--accent-secondary)
+  );
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(124, 92, 255, 0.3),
+    0 2px 0 rgba(255, 255, 255, 0.1) inset;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(124, 92, 255, 0.4),
+    0 2px 0 rgba(255, 255, 255, 0.1) inset;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Вторичная кнопка */
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--border-primary);
+  color: var(--text-primary);
+  backdrop-filter: blur(8px);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Разделитель */
+.login-divider {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 400;
+  margin: 1rem 0;
+}
+
+.login-divider::before,
+.login-divider::after {
+  content: "";
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border-primary),
+    transparent
+  );
+}
+
+/* Вспомогательный текст */
+.login-help {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-align: center;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.login-help a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-help a:hover {
+  text-decoration: underline;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 1rem;
+  }
+
+  .login-card {
+    padding: 1.5rem 1.25rem;
+    border-radius: 16px;
+  }
+
+  .form-input {
+    height: 2.75rem;
+  }
+
+  .btn {
+    padding: 0.675rem 1rem;
+  }
+}
+
+/* Анимации для плавного появления */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-card {
+  animation: fadeInUp 0.6s ease-out;
+}

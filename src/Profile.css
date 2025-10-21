@@ -1,0 +1,385 @@
+/* Profile.css - стеклянный стиль с Unbounded шрифтом */
+@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  /* Цветовая палитра */
+  --bg-primary: #0f1115;
+  --bg-secondary: rgba(255, 255, 255, 0.06);
+  --bg-accent: rgba(124, 92, 255, 0.1);
+  --text-primary: #e8eaf0;
+  --text-secondary: #a6adbb;
+  --text-accent: #7c5cff;
+  --border-primary: rgba(255, 255, 255, 0.12);
+
+  /* Акцентные цвета */
+  --accent-primary: #7c5cff;
+  --accent-secondary: #5b3df0;
+  --accent-glow: rgba(124, 92, 255, 0.35);
+  --success: #16a34a;
+  --error: #ef4444;
+
+  /* Эффекты */
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --blur-effect: blur(12px);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-primary: #f7f8fb;
+    --bg-secondary: rgba(255, 255, 255, 0.85);
+    --bg-accent: rgba(124, 92, 255, 0.08);
+    --text-primary: #0f1115;
+    --text-secondary: #5b6474;
+    --border-primary: rgba(255, 255, 255, 0.3);
+    --glass-shadow: 0 10px 24px rgba(16, 24, 40, 0.08);
+  }
+}
+
+/* ===== КОНТЕЙНЕР ========================================================= */
+.profile-container {
+  min-height: 100dvh;
+  padding: 2rem 1.25rem;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(
+      1200px 600px at 90% -10%,
+      rgba(124, 92, 255, 0.15),
+      transparent 60%
+    ),
+    radial-gradient(
+      800px 500px at -10% 100%,
+      rgba(46, 196, 182, 0.1),
+      transparent 60%
+    ),
+    var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "Unbounded", system-ui, -apple-system, sans-serif;
+}
+
+/* Карточка профиля */
+.profile-card {
+  width: min(720px, 100%);
+  background: var(--bg-secondary);
+  border: var(--glass-border);
+  border-radius: 20px;
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--blur-effect);
+  -webkit-backdrop-filter: var(--blur-effect);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+}
+
+/* ===== ШАПКА ============================================================= */
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.profile-title {
+  font-size: clamp(1.5rem, 2.2vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(
+    135deg,
+    var(--text-primary),
+    var(--text-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== ИНФО-БЛОКИ ======================================================== */
+.profile-info {
+  display: grid;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.profile-info strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ===== ФОРМА РЕДАКТИРОВАНИЯ ============================================== */
+.profile-form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  height: 3rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-primary);
+  background: var(--glass-bg);
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.form-input::placeholder {
+  color: var(--text-secondary);
+  font-weight: 300;
+}
+
+.form-input:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 4px var(--accent-glow);
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.file-input {
+  padding: 0.75rem;
+  border: 1px dashed var(--border-primary);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.file-input:hover {
+  border-color: var(--accent-primary);
+  background: rgba(124, 92, 255, 0.05);
+}
+
+/* ===== КНОПКИ ============================================================ */
+.profile-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid transparent;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: 120px;
+}
+
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary),
+    var(--accent-secondary)
+  );
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(124, 92, 255, 0.3),
+    0 2px 0 rgba(255, 255, 255, 0.1) inset;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(124, 92, 255, 0.4),
+    0 2px 0 rgba(255, 255, 255, 0.1) inset;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--border-primary);
+  color: var(--text-primary);
+  backdrop-filter: blur(8px);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+/* ===== ПРОСМОТР ПРОФИЛЯ ================================================== */
+.profile-view {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: var(--glass-bg);
+  border: var(--glass-border);
+  backdrop-filter: blur(8px);
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 16px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--border-primary);
+  background: var(--bg-secondary);
+}
+
+.profile-meta {
+  flex: 1;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.profile-name {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.profile-username {
+  color: var(--text-accent);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.profile-bio {
+  margin: 0.5rem 0 0;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+.profile-ids {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.375rem;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+/* ===== АДАПТИВНОСТЬ ====================================================== */
+@media (min-width: 680px) {
+  .profile-form {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1.5rem;
+  }
+
+  .profile-form .form-group:nth-last-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  .profile-form .form-group:last-child {
+    grid-column: 2 / 3;
+    justify-self: end;
+    align-self: end;
+  }
+
+  .profile-actions {
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 679px) {
+  .profile-container {
+    padding: 1rem;
+  }
+
+  .profile-card {
+    padding: 1.5rem;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .profile-view {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .profile-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+/* ===== УТИЛИТЫ =========================================================== */
+.stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.profile-view {
+  animation: fadeInUp 0.4s ease-out;
+}
